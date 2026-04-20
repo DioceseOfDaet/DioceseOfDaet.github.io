@@ -7,11 +7,21 @@
 body{
     background-color: rgb(253, 246, 234);
     overflow-x: hidden;
+    font-size: 1.6rem;
 }
 
 
 :root{
     --red: rgb(221, 0, 0);
+    font-size: 62.5%;
+}
+
+.menu_button{
+    display: none;
+    position: fixed;
+    right: 7vw;
+    font-size: 2rem;
+    font-weight: bolder;
 }
 
 header{
@@ -51,7 +61,7 @@ nav ul{
     display: flex;
     list-style: none;
     gap: 5px;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 nav ul li{
@@ -65,8 +75,8 @@ nav ul li:hover{
 
 main{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0vw 10vw;
-    font-size: 1.2rem;
+    margin: 5vw 10vw 0vw 10vw;
+    font-size: 2rem;
 }
 
 footer{
@@ -78,10 +88,11 @@ footer{
 /* HOME PAGE */
 .red_title{
     color: var(--red);
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: 'Times New Roman', Times, serif;
     margin-left: -3%;
     margin-bottom: 2vh;
+    margin-top: 5vh;
 }
 .image_slider{
     width: 100vw;
@@ -115,7 +126,7 @@ footer{
 }
 
 .bishop_name_description h2{
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 10px;
 }
 
@@ -144,4 +155,103 @@ footer{
 
 .the_diocese p{
     width: 60%;
+}
+
+@media (max-width: 768px){
+    .coat_of_arms{
+        width: 13vw;
+    }
+
+    .coat_of_arms img{
+        width: 100%;
+    }
+
+    .the_roman_catholic_diocese_of_daet{
+        font-size: 1.2rem;
+    }
+
+    .menu_button{
+        display: block;
+    }
+
+    nav{
+        width: 50vw;
+        top: 8vh;
+        left: -100vw;
+        font-size: 1rem;
+        background-color: white;
+    }
+
+    nav ul{
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul li:hover{
+        border-bottom: var(--red) solid 3px;
+        cursor: pointer;
+    }
+
+    main{
+        margin: 0vh 6vw 0vw 6vw;
+        font-size: 1.7rem;
+    }
+
+    footer{
+        background-color: #e2e2e2;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* HOME PAGE */
+    .red_title{
+        font-size: 3rem;
+        margin-left: -4%;
+        margin-bottom: 2vh;
+        margin-top: 5vh;
+    }
+
+    .image_slider{
+        width: 100vw;
+        height: max-content;
+        margin-top: 7vh;
+    }
+
+    .image_slider img{
+        width: 100vw;
+        margin-top: -18%;
+    }
+
+    .the_bishop{
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .bishop_image{
+        width: 70%;
+    }
+
+    .bishop_name_description{
+        width: 100%;
+    }
+
+    .bishop_name_description h2{
+        font-size: 2.3rem;
+        text-align: center;
+    }
+
+
+    .the_diocese{
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .cathedral_image{
+        width: 90%;
+    }
+
+    .the_diocese p{
+        width: 100%;
+    }
 }

@@ -6,6 +6,7 @@
     <title>Diocese of Daet</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/res/favicon.ico">
+    <script src="https://kit.fontawesome.com/a878311718.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header id="navbar">
@@ -17,13 +18,21 @@
             <hr>
             <h2>DIOCESE OF DAET</h2>
         </div>
-        <p class="menu_button" id="menuBtn">☰</p>
-        <nav>
+        <p class="menu_button" onclick="showMenu()">☰</p>
+        <nav id="navBar">
             <ul>
                 <li>Home</li>
-                <li>About</li>
+                <div class="about_subnav" id="about_subnav">
+                    <ul>
+                        <li>The Diocese</li>
+                        <li>The Bishop</li>
+                        <li>Curia & Officers</li>
+                        <li>Directory</li>
+                        <li>Vicarates</li>
+                    </ul>
+                </div>
+                <li id="aboutBtn" onclick="showAboutSection(event)">About</li>
                 <li>News</li>
-                <li>History</li>
                 <li>Contact Us</li>
             </ul>
         </nav>
@@ -52,8 +61,28 @@
     </main>
     <br><br><br>
     <footer>
-        <h3>Created and Designed by Aidan Miguel Lausin</h3>
-        <script src="/script.js"></script>
+        <div style="display: flex; align-items: center;">
+            <div class="coat_of_arms_footer">
+                <img src="/res/Coat_of_arms_of_the_Diocese_of_Daet.png" alt="Coat of arms of the Diocese of Daet">
+            </div>
+            <div class="diocese_of_daet_contact_adress">
+                <h2>DIOCESE OF DAET</h2><hr>
+                <h3>Brgy. Gahonon, Daet, 4600 Camarines Norte, Bicol, Philippines</h3>
+                <h3>Telephone: 0926 087 6901</h3>
+            </div>
+        </div>
+        <div class="connect_soccom">
+            <div class="connect_with_us">
+                <h2>Connect with us:</h2>
+                <i class="fa-brands fa-facebook"> Diyosis ng Daet</i>
+            </div>
+            <div class="coscamm">
+                <img src="/res/COSCAMM.png" alt="">
+            </div>
+        </div>
+        
     </footer>
+    <h3 style="background-color: rgb(48, 48, 48); text-align: center; color: white; padding: 5px; font-size: 1rem;">Created and Designed by Aidan Miguel Lausin</h3>
+    <script src="/script.js"></script>
 </body>
 </html>

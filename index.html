@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/a878311718.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header id="navbar">
+    <header id="navBar">
         <div class="coat_of_arms">
             <img src="/res/Coat_of_arms_of_the_Diocese_of_Daet.png" alt="Coat of arms of the Diocese of Daet">
         </div>
@@ -18,27 +18,39 @@
             <hr>
             <h2>DIOCESE OF DAET</h2>
         </div>
-        <p class="menu_button" onclick="showMenu()">☰</p>
-        <nav id="navBar">
+        <p id="menuBtn" class="menu_button" onclick="showMenu()">☰</p>
+        <nav id="navMenu">
             <ul>
-                <li>Home</li>
+                <li><a href="/">Home</a></li>
                 <div class="about_subnav" id="about_subnav">
                     <ul>
-                        <li>The Diocese</li>
-                        <li>The Bishop</li>
-                        <li>Curia & Officers</li>
-                        <li>Directory</li>
-                        <li>Vicarates</li>
+                        <li><a href="/about/the-diocese.html">The Diocese</a></li>
+                        <li><a href="/about/the-bishop.html">The Bishop</a></li>
+                        <li><a href="/about/curia-and-officers.html">Curia & Officers</a></li>
+                        <li><a href="/about/directory.html">Directory</a></li>
+                        <li><a href="/about/vicarates.html">Vicarates</a></li>
                     </ul>
                 </div>
                 <li id="aboutBtn" onclick="showAboutSection(event)">About</li>
-                <li>News</li>
-                <li>Contact Us</li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
+    <!-- Slideshow container -->
     <div class="image_slider">
-        <img src="/res/slider_images/slider_image.jpg" alt="">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="/res/slider_images/slider_image.jpg" style="width:100%; margin-top: -18%;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/res/slider_images/slider_image2.jpg" style="width:100%; margin-top: -7%;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/res/slider_images/slider_image3.png" style="width:100%; margin-top: 8%;">
+        </div>
     </div>
     <main>
         <h2 class="red_title">THE BISHOP</h2>
@@ -68,6 +80,7 @@
             <div class="diocese_of_daet_contact_adress">
                 <h2>DIOCESE OF DAET</h2><hr>
                 <h3>Brgy. Gahonon, Daet, 4600 Camarines Norte, Bicol, Philippines</h3>
+                <h3>Email: daetchancery@yahoo.com</h3>
                 <h3>Telephone: 0926 087 6901</h3>
             </div>
         </div>

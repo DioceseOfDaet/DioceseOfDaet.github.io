@@ -72,6 +72,11 @@ nav ul li{
     padding: 0 5px;
 }
 
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
 nav ul li:hover{
     border-bottom: var(--red) solid 3px;
     cursor: pointer;
@@ -132,16 +137,16 @@ footer{
 }
 
 .diocese_of_daet_contact_adress{
-    width: 20vw;
+    width: min-content;
 }
-
 .diocese_of_daet_contact_adress h3{
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: lighter;
 }
 
 .diocese_of_daet_contact_adress h2{
     font-size: 2.9rem;
+    width: max-content;
 }
 
 .connect_with_us{
@@ -172,17 +177,33 @@ footer{
     margin-bottom: 2vh;
     margin-top: 5vh;
 }
-.image_slider{
-    width: 100vw;
-    height: 50vw;
+
+/* Slideshow container */
+.image_slider {
+    max-width: 100vw;
+    max-height: 47vw;
+    position: relative;
+    margin: auto;
     overflow: hidden;
     object-fit: cover;
     object-position: center;
 }
 
-.image_slider img{
+/* Hide the images by default */
+.mySlides {
+    display: none;
     width: 100vw;
-    margin-top: -18%;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: .7s;
+}
+
+@keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
 }
 
 .the_bishop{
@@ -235,7 +256,127 @@ footer{
     width: 60%;
 }
 
-@media (max-width: 768px){
+/* CONTACT US */
+.contact_us{
+    margin-top: 15rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    align-items: center;
+    row-gap: 50px;
+    column-gap: 20px;
+}
+
+.contact_info ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 2rem;
+}
+
+.contact_info ul li{
+    color: black;
+    font-weight: bolder;
+}
+.contact_info ul li i{
+    background-color: var(--red);
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    font-size: 2rem;
+}
+
+.contact_info ul li a{
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    margin-left: 5vw;
+    font-weight: lighter;
+    font-size: 1.7rem;
+    transition: ease .3s;
+}
+
+.contact_info ul li a:hover{
+    color: var(--red);
+    font-weight: 500;
+}
+
+.map{
+    border: #ffffff solid 5px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #e2e2e2;
+    height: 30vw;
+}
+
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.contact_form form{
+    background-color: #e2e2e2;
+    border: #999999 solid 2px;
+    border-radius: 10px;
+    padding: 10px 30px;
+    width: 100%;
+}
+
+.form_name{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 10px;
+}
+
+.form_contacts{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    column-gap: 10px;
+}
+
+.contact_form form span{
+    margin: 5px 0;
+}
+
+.contact_form form input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: #999999 solid 2px;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.message{
+    height: 15vw;
+    width: 102%;
+    margin-bottom: 50px;
+}
+
+.message textarea{
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: #999999 solid 2px;
+}
+
+.contact_form form .submit_form{
+    width: 27%;
+    border-radius: 100vw;
+    font-weight: bold;
+    background-color: var(--red);
+    color: white;
+}
+
+.contact_form form .submit_form:hover{
+    background-color:  rgb(155, 16, 16);
+}
+
+
+@media (max-width: 850px){
     .coat_of_arms{
         width: 13vw;
     }
@@ -245,16 +386,17 @@ footer{
     }
 
     .the_roman_catholic_diocese_of_daet{
-        font-size: 1.2rem;
+        font-size: 2.5vw;
     }
 
     .menu_button{
         display: block;
+        font-size: 3rem;
     }
 
     nav{
         width: 40vw;
-        top: 6.5rem;
+        top: 15.7vw;
         left: -100vw;
         background-color: white;
         transition: ease .7s;
@@ -262,14 +404,14 @@ footer{
 
     nav ul{
         flex-direction: column;
-        padding:0px;
-        font-size: 1.2rem;
+        padding: 20px 0;
+        font-size: 2rem;
         gap: 0;
     }
 
     nav ul li{
         margin: 0;
-        padding: 20px 30px;
+        padding: 30px;
         width: 100%;   
         text-align: center;   
     }
@@ -287,11 +429,11 @@ footer{
     }
 
     .about_subnav ul li{
-        padding: 10px;
+        padding: 20px;
         margin: 0;
         background-color: white;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 2rem;
         border: #ffffff solid 2px;
     }
 
@@ -304,61 +446,57 @@ footer{
 
     main{
         margin: 0vh 6vw 0vw 6vw;
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
 
     main p{
         text-align: justify;
-        text-indent: 15px;
+        text-indent: 25px;
     }
 
     footer{
         padding: 10px;
         justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        gap: 3rem;
     }
 
     .coat_of_arms_footer{
         width: 20vw;
     }
 
-    .coat_of_arms_footer img{
-        width: 100%;
-    }
-
-    .diocese_of_daet_contact_adress{
-        width: 40vw;
-    }
-
     .diocese_of_daet_contact_adress h3{
-        font-size: 1rem;
+        font-size: 1.8rem;
         font-weight: lighter;
     }
 
     .diocese_of_daet_contact_adress h2{
-        font-size: 1.5rem;
+        font-size: 3rem;
     }
 
     .connect_with_us{
-        width: 85%;
-        font-size: .8rem;
+        width: max-content;
+        font-size: 2rem;
     }
 
     .coscamm{
-        width: 80%;
+        width: 100%;
     }
 
     .connect_soccom{
         width: 30vw;
         flex-direction: column;
-        align-items: end;
+        align-items: center;
+        gap: 4rem;
     }
 
     /* HOME PAGE */
     .red_title{
-        font-size: 3rem;
+        font-size: 5rem;
         margin-left: -4%;
         margin-bottom: 2vh;
-        margin-top: 5vh;
+        margin-top: 7vh;
     }
 
     .image_slider{
@@ -378,7 +516,7 @@ footer{
     }
 
     .bishop_image{
-        width: 70%;
+        width: 50%;
     }
 
     .bishop_name_description{
@@ -386,8 +524,9 @@ footer{
     }
 
     .bishop_name_description h2{
-        font-size: 2.3rem;
+        font-size: 3rem;
         text-align: center;
+        margin-bottom: 20px;
     }
 
 
@@ -398,10 +537,184 @@ footer{
     }
 
     .cathedral_image{
-        width: 90%;
+        width: 70%;
     }
 
     .the_diocese p{
         width: 100%;
+    }   
+
+    /* CONTACT US */
+    .contact_us{
+        margin-top: 15rem;
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto auto;
+
     }
+
+    .contact_info ul{
+        display: grid;
+        grid-template-columns: 55% 45%;
+        grid-template-rows: auto auto;
+        row-gap: 50px;
+    }
+
+    .map{
+        height: 50vw;
+    }
+
+    .contact_form form{
+        height: 70vw;
+    }
+
+    .message{
+        height: 45%;
+    }
+}
+
+@media (max-width: 450px){
+    .menu_button{
+        font-size: 2rem;
+    }
+
+    nav{
+        top: 6.5rem;
+    }
+
+    nav ul{
+        padding:0px;
+        font-size: 1.2rem;
+    }
+
+    nav ul li{
+        padding: 20px 30px;
+    }
+
+    .about_subnav ul li{
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    main{
+        font-size: 1.5rem;
+    }
+
+    main p{
+        text-align: justify;
+        text-indent: 15px;
+    }
+
+    footer{
+        gap: 1rem;
+    }
+
+    .diocese_of_daet_contact_adress h3{
+        font-size: 1.05rem;
+    }
+
+    .diocese_of_daet_contact_adress h2{
+        font-size: 1.7rem;
+    }
+
+    .connect_with_us{
+        font-size: 1rem;
+    }
+
+    .connect_soccom{
+        gap: 2rem;
+    }
+
+    /* HOME PAGE */
+    .red_title{
+        font-size: 3rem;
+        margin-top: 5vh;
+    }
+
+    .bishop_image{
+        width: 70%;
+    }
+
+    .bishop_name_description{
+        width: 100%;
+    }
+
+    .bishop_name_description h2{
+        font-size: 2.3rem;
+    }
+
+    .cathedral_image{
+        width: 90%;
+    }
+    /* CONTACT US */
+    .contact_us{
+        margin-top: 8rem;
+    }
+
+    .contact_info ul{
+        column-gap: 0;
+        row-gap: 30px;
+    }
+
+    .contact_info ul li{
+        font-size: 1.5rem;
+    }
+
+    .contact_info ul li i{
+        font-size: 1.3rem;
+    }
+
+    .contact_info ul li a{
+        font-size: 1rem;
+    }
+
+    .map{
+        height: 70vw;
+    }
+
+    .contact_form form{
+        height: 100vw;
+    }
+
+    .form_name{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        column-gap: 10px;
+    }
+
+    .form_contacts{
+        display: grid;
+        grid-template-columns: 60% 40%;
+        column-gap: 10px;
+    }
+
+    .contact_form form span{
+        margin: 5px 0;
+    }
+
+    .contact_form form label{
+        font-size: 1.2rem;
+    }
+
+    .contact_form form input{
+        padding: 7px;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+    .message{
+        height: 40%;
+        width: 102%;
+        margin-bottom: 30px;
+    }
+
+    .message textarea{
+        font-size: 1rem;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .contact_form form .submit_form{
+        width: 40%;
+    }
+    
 }

@@ -99,10 +99,10 @@ nav ul li:hover{
 }
 
 .about_subnav ul li{
-    padding: 15px;
     margin: 0;
     background-color: white;
     width: 100%;
+    padding: 15px;
     font-size: 1.5rem;
     border: #999999 solid 2px;
 }
@@ -110,17 +110,26 @@ nav ul li:hover{
 .about_subnav ul li:hover{
     background-color: var(--red);
     border: white solid 2px;
-    color: white;
     transform: scale(1);
+}
+
+.about_subnav ul li:hover a{
+    color: white;
 }
 
 main{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 5vw 10vw 0vw 10vw;
+    margin: 15rem 10vw 0vw 10vw;
     font-size: 2rem;
 }
 
+main p{
+    text-indent: 25px;
+    text-align: justify;
+}
+
 footer{
+    margin-top: 5vw;
     background-color: #e2e2e2;
     display: flex;
     justify-content: space-around;
@@ -136,15 +145,15 @@ footer{
     width: 100%;
 }
 
-.diocese_of_daet_contact_adress{
+.diocese_of_daet_contact_address{
     width: min-content;
 }
-.diocese_of_daet_contact_adress h3{
+.diocese_of_daet_contact_address h3{
     font-size: 1.8rem;
     font-weight: lighter;
 }
 
-.diocese_of_daet_contact_adress h2{
+.diocese_of_daet_contact_address h2{
     font-size: 2.9rem;
     width: max-content;
 }
@@ -180,10 +189,10 @@ footer{
 
 /* Slideshow container */
 .image_slider {
-    max-width: 100vw;
-    max-height: 47vw;
-    position: relative;
-    margin: auto;
+    width: 100vw;
+    max-height: 41vw;
+    position: absolute;
+    top: 7vw;
     overflow: hidden;
     object-fit: cover;
     object-position: center;
@@ -192,8 +201,12 @@ footer{
 /* Hide the images by default */
 .mySlides {
     display: none;
-    width: 100vw;
 }
+
+.mySlides img{
+    width: 100%;
+}
+
 
 /* Fading animation */
 .fade {
@@ -204,6 +217,10 @@ footer{
 @keyframes fade {
     from {opacity: .5}
     to {opacity: 1}
+}
+
+.index_content{
+    margin-top: 55vw;
 }
 
 .the_bishop{
@@ -256,9 +273,176 @@ footer{
     width: 60%;
 }
 
+/* ABOUT - THE DIOCESE */
+.special_map_holder{
+    width: 100%;
+    height: 40vw;
+    padding: 20px;
+}
+
+.special_map{
+    border: solid 7px white;
+    box-shadow: 5px 5px 5px #999999;
+    border-radius: 5px;
+}
+
+.special_map_popup{
+    width: 100%;
+}
+
+.special_map_popup_image_holder{
+    width: 100%;
+    height: min-content;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.special_map_popup_image_holder img{
+    width: 100%;
+}
+
+.special_map_popup p{
+    width: 100%;
+    text-align: center;
+    text-indent: 0;
+}
+
+.special_map_popup p a{
+    text-decoration: none;
+    color: blue;
+}
+
+/* PARISHES - INDIVIDUAL*/
+.church_stuff{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 20px;
+}
+
+.church_images{
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;  
+    gap: 15px;
+}
+
+.church_images_row{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 15px;
+}
+
+.church_image_holder{
+    width: 100%;
+    aspect-ratio: 3/2;
+    border: rgb(255, 255, 255) solid 3px;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #999999;
+} 
+
+.church_image_holder img{
+    width: 100%;
+}
+
+.church_facebook{
+    margin: 5rem 0;
+}
+
+.church_facebook a{
+    padding:10px 20px; 
+    background:#1877f2; 
+    color:white; 
+    text-decoration:none; 
+    border-radius:5px;
+}
+
+.stand_alone{
+    width: 50%;
+    margin-left: 25%;
+}
+
+/* The Fullscreen Overlay Background */
+#lightbox-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999; /* Sit on top of everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    text-align: center;
+}
+
+/* The Image inside the Lightbox */
+#lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    margin-top: 5%;
+    border: 3px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Close Button */
+#lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* This class will be toggled by JavaScript */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Pointer cursor for clickable images */
+.clickable-img {
+    cursor: zoom-in;
+    transition: 0.3s;
+}
+
+.clickable-img:hover {
+    opacity: 0.8;
+}
+
+/* THE BISHOP */
+.bishops{
+    background-color: #999999;
+    padding: 2px;
+}
+
+.bishop_header{
+    width: 100%;
+    background-color: #c0c0c0;
+    display: grid;
+    grid-template-columns: 20% 40% 25% 15%;
+    align-items: center;
+    justify-items: center;
+}
+
+.bishop_portrait_image_holder{
+    padding: 10px;
+    width: 70%;
+}
+
+.bishop_portrait_image_holder img{
+    width: 100%;
+}
+
 /* CONTACT US */
 .contact_us{
-    margin-top: 15rem;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto;
@@ -445,7 +629,7 @@ footer{
     }
 
     main{
-        margin: 0vh 6vw 0vw 6vw;
+        margin: 18.8vw 6vw 0vw 6vw;
         font-size: 2rem;
     }
 
@@ -466,12 +650,12 @@ footer{
         width: 20vw;
     }
 
-    .diocese_of_daet_contact_adress h3{
+    .diocese_of_daet_contact_address h3{
         font-size: 1.8rem;
         font-weight: lighter;
     }
 
-    .diocese_of_daet_contact_adress h2{
+    .diocese_of_daet_contact_address h2{
         font-size: 3rem;
     }
 
@@ -510,6 +694,10 @@ footer{
         margin-top: -18%;
     }
 
+    .index_content{
+        margin-top: 70vw;
+    }
+
     .the_bishop{
         flex-direction: column-reverse;
         gap: 15px;
@@ -544,9 +732,15 @@ footer{
         width: 100%;
     }   
 
+    /* PARISHES - INDIVIDUAL */
+    .church_stuff{
+        display: grid;
+        grid-template-columns: 100%;
+        column-gap: 0;
+    }
+
     /* CONTACT US */
     .contact_us{
-        margin-top: 15rem;
         grid-template-columns: 100%;
         grid-template-rows: auto auto auto auto;
 
@@ -596,6 +790,7 @@ footer{
     }
 
     main{
+        margin-top: 24vw;
         font-size: 1.5rem;
     }
 
@@ -608,11 +803,11 @@ footer{
         gap: 1rem;
     }
 
-    .diocese_of_daet_contact_adress h3{
+    .diocese_of_daet_contact_address h3{
         font-size: 1.05rem;
     }
 
-    .diocese_of_daet_contact_adress h2{
+    .diocese_of_daet_contact_address h2{
         font-size: 1.7rem;
     }
 
@@ -645,11 +840,44 @@ footer{
     .cathedral_image{
         width: 90%;
     }
-    /* CONTACT US */
-    .contact_us{
-        margin-top: 8rem;
+
+    /* PARISHES - INDIVIDUAL*/
+    .church_images_row{
+        display: grid;
+        grid-template-columns: 100%;
+        row-gap: 15px;
     }
 
+    .church_image_holder{
+        width: 100%;
+        aspect-ratio: 3/2;
+        border: rgb(255, 255, 255) solid 3px;
+        object-fit: cover;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px #999999;
+    } 
+
+    .church_image_holder img{
+        width: 100%;
+    }
+
+    .church_facebook{
+        margin: 5rem 0;
+    }
+
+    .church_facebook a{
+        padding:10px 20px; 
+        background:#1877f2; 
+        color:white; 
+        text-decoration:none; 
+        border-radius:5px;
+    }
+
+    .stand_alone{
+        width: 100%;
+        margin-left: 0%;
+    }
+    /* CONTACT US */
     .contact_info ul{
         column-gap: 0;
         row-gap: 30px;

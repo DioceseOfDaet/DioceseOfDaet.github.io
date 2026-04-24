@@ -6,6 +6,11 @@
     <title>Diocese of Daet</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/res/favicon.ico">
+    <script src="https://kit.fontawesome.com/a878311718.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.maptiler.com/maptiler-leaflet-sdk/v2.0.0/leaflet-maptiler-sdk.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <header id="navBar">
@@ -27,7 +32,7 @@
                         <li><a href="/about/the-bishop.html">The Bishop</a></li>
                         <li><a href="/about/curia-and-officers.html">Curia & Officers</a></li>
                         <li><a href="/about/directory.html">Directory</a></li>
-                        <li><a href="/about/vicarates.html">Vicarates</a></li>
+                        <li><a href="/about/vicariates.html">Vicariates</a></li>
                     </ul>
                 </div>
                 <li id="aboutBtn" onclick="showAboutSection(event)">About</li>
@@ -36,16 +41,92 @@
             </ul>
         </nav>
     </header>
-    <main style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <h2 style="margin-top: 40vh;">Sorry, this page is under construction</h2>
+    <main>
+        <h2 class="red_title">The Diocese</h2>
+        <p>The Diocese of Daet (Latin: Dioecesis Daëtiensis) is a Latin Catholic diocese of the Catholic Church in the Philippines. It is named after its episcopal see, Daet, a city in the province of Camarines Norte in the Philippines.</p>
+        <br>
+        <p>The Diocese of Daet, with jurisdiction over the Province of Camarines Norte and suffragan to the Archdiocese of Caceres, was created on May 27, 1974, by Pope Paul VI with Celestino R. Enverga as the first bishop of the diocese.</p>
+                
+        <h2 class="red_title">Historic-Geographical Information</h2>
+        <p>The history of Camarines Norte has been closely linked with that of its sister province, Camarines Sur since the sixteenth century. At that time they were just one province which the Spaniards called Tierra de Camarines – land of grain storehouses, as the place abounded with stored grain.</p>
+        <br>
+        <p>Christianity was first introduced in the Bicol area in 1569 by Fray Alonso Jimenez, OSA. Then Captain Andres Ibarra explored the region. Captain Juan Salcedo was reported to have passed through Paracale, founded a settlement later which he named Ciudad de Nueva Caceres, a dependent village of the Spanish City of Caceres. In 1594 the Camarineses were placed under the jurisdiction of the Franciscans, and this arrangement lasted till the end of the Spanish regime.</p>
+        <br>
+        <p>In 1829 Ambos Camarines - both Camarineses - were separated into two provinces, but were merged again in 1854. They were separated again in 1857 and merged again in 1893. In 1919 the Philippine Legislature decreed the final separation of the single province into Camarines Norte and Camarines Sur</p>
+        <br>
+        <p>In 1595 the Diocese of Caceres was created, and covered the territories of the Camarineses, Albay, Masbate, Catanduanes, Samar, and Tayabas. Bishop Luis Baldonado was its first bishop. In 1910 the Diocese of Lipa was established and took over the other provinces leaving only the Bicol Region to the Diocese of Caceres.</p>
+        <br>
+        <p>The Diocese of Nueva Caceres evolved into an Archdiocese in 1951.  On May 27, 1974, by virtue of the Apostolic Letter of His Holiness Pope Paul VI, Requirit maximopere, the Diocese of Daet was born and became a suffragan of the Archdiocese of Caceres. Subsequently, on September 1, 1974, the new Diocese of Daet was formally erected, and installed its first Bishop, the Most Reverend Celestino Rojo Enverga, a native of Camarines Norte. The Diocese of Daet was placed under the patronage of St. Joseph the Worker, whose feast is celebrated on May 1.</p>
+        <br>
+        <p>The diocese comprises the civil province of Camarines Norte composed of 12 towns and 282 barangays. It has a total land area of 2,200.01 square kilometers. Part of this area is the 8,762 hectares which the province was able to retrieve from Quezon Province following a Supreme Court decision on November 8, 1989. The Bishop of Gumaca has issued a decree on March 21, 1994 formally turning over the ecclesiastical jurisdiction of the nine barangays to the Diocese of Daet.</p>
+        <br>
+        <p>During the time of its foundation, the Diocese of Daet has only 14 parishes and 18 diocesan priests. During the incumbency of Bishop Enverga, he was able to create 4 more parishes and has ordained 33 diocesan priests.</p>
+        <br>
+        <p>The Diocese became sede vacante with the death of Bishop Enverga on October 16, 1990. The Most Reverend Benjamin J. Almoneda, then Auxiliary Bishop of Daet was elected as Diocesan Administrator, and on July 6, 1991, was installed as Second Bishop of Daet. On September 1, 1999, the Diocese celebrated its Silver Anniversary through simple yet meaningful ceremonies.</p>
+        <br>
+        <p>In 2023,  the Diocese has 7 vicariates with 27 full parishes and 3 quasi-parishes, and is served by 45 diocesan priests and 13 religious men actively working inside the Diocese, and 25 religious women.</p>
+        
+        <h2 class="red_title">Economic Profile</h2>
+        <p>Camarines Norte is the northernmost province of the Bicol Peninsula or Region V. It is bounded on its north by Lamon Bay and the Pacific Ocean which accounts for its abundant supply of fish. Palay and corn are planted in the valleys, abaca in the hills. The scenic beauty of its beaches is well known.</p>
+        <br>
+        <p>But the most important natural resources which has attracted Spaniards and Americans alike in the past are the gold, silver and other mineral deposits found in Camarines Norte, particularly in the town of Paracale where gold is mined. Statistics show that next to the Mountain Province (now Benguet, Ifugao, Mountain Province and Kalinga-Apayao) Camarines Norte is the richest mine resource in the country.</p>
+        <br>
+        <p>Despite the province's abundance in natural resources, it remains economically under- developed. Around 29% of the population are in the labor force. Of these 46% are engaged in agriculture, fishery and forestry. Others are engaged in industry, like wholesale and retail trade, manufacturing, transportation and communication services, and construction.</p>    
+
+        <h2 class="red_title">Socio-Cultural Profile</h2>
+        <p>In the year 2000 census, the whole diocese has a population of 470,654. Ninety Six percent are Catholics.</p>
+        <br>
+        <p>The province is bounded by the Tagalog-speaking province of Quezon in the north and by the Bikol-speaking Camarines Sur in the south. This explains the reason why six towns in the north are predominantly Tagalog speaking while the remaining six in the south speak Bikol. Statistics observe that 59.58% of the total population have Tagalog as their native tongue, and 39.2% speak Bikol.</p>
+        <br>
+        <p>Around two-thirds of the people reside in the rural areas. The Diocese of Daet has a young population as 63% are below twenty-five years old. The literacy rate is high with 97.89%.</p>
+
+        <h2 class="red_title">The Diocesan Mission and Vision</h2>
+        <p>On November 18-22, 1991, Bishop Benjamin Almoneda gathered all the Clergy together with some lay men and women from all the parishes in the Diocese of Daet for a week-long prayer and discernment at the Sacro Costato Retreat House in Quezon City. The product of the gathering was an important document intended to be a practical guide for pastoral planning: the Diocesan Vision and Mission. Thus on January 6, 1992, on the occasion of his second Episcopal anniversary, Bishop Almoneda, wrote a Pastoral Letter promulgating the Diocesan Vision and Mission to be pursued and incorporated in all the programs of the diocese as well as every parish.</p>
+        
+        <h2 class="red_title" style="text-align: center;">Mission</h2>
+        <p>
+            To attain this vision, we, the people of God of the Diocese of Daet, responding to the call of the Holy Spirit, commit ourselves to become a discerning, witnessing, caring, and self-relying community of disciples through:
+            <ol style="margin-left: 4vw;">
+                <li>Renewed evangelization, catechesis, and education</li>
+                <li>Meaningful, participative, and indigenous liturgy</li>
+                <li>Deepening of Spirituality</li>
+                <li>Programs and projects of social action, justice, and peace</li>
+                <li>Formation of basic ecclesial communities and pastoral council</li>
+                <li>Integration and re-orientation of formerly mandated organizations</li>
+                <li>Youth formation, participation, involvement, and;</li>
+                <li>Promotion of responsible politics especially through the formation of conscience.</li>
+            </ol>
+        </p>
+
+        <h2 class="red_title" style="text-align: center;">Vision</h2>
+        <p>A community of disciples of Jesus Christ rooted in the Word of God, guided by the Magisterium and nourished by the Eucharist and the other Sacraments, responding to the signs of the time, promoting love, freedom, justice, and peace, and committed to the attainment of salvation through total human development.</p>
+
+        <h2 class="red_title">Diocesan Assemblies of 1993 and 1994</h2>
+        <p>After a year-long diocesan-wide Participatory Action Research (PAR) Program undertaken in partnership with the Asian Social Institute (ASI), the First Diocesan Pastoral Assembly (DPA) was held on May 31 - June 4, 1993. It was attended by all the clergy, the representatives of the parish researchers as well as by sectoral delegates. They were able to draw up a Diocesan Pastoral Plan that addressed the pastoral needs of the diocese. The DPA was to be followed by vicarial and parish pastoral assemblies that validated the pastoral plan for eventual implementation.</p>
+        <br>
+        <p>The Second DPA was held on August 29 - September 1, 1994. It was attended by clergy, religious and lay representatives to draw up pastoral directives for the diocese in the areas of Worship, Education, Social Services, Temporalities and Governance. On October 1, 1994, the bishop promulgated the 134 directives approved by the assembly (34 for Worship, 35 for Education, 29 for Social Services, 25 for Temporalities and 11 for Governance).</p>
+        
+        <h2 class="red_title">The Call for the First Diocesan Synod of Daet</h2>
+        <p>In the Priests' General Assembly of February 13, 2001, Bishop Almoneda, Fr. Romeo Violeta and Mrs. Purita Pimentel, delegates to the National Pastoral Consultation on Church Renewal, reported to the priests, religious and some invited lay people regarding the outcome of the consultation. A proposal was raised to rearrange the nine priorities mentioned above according to the needs of the Diocese. After some deliberations, it came up that all the said pastoral priorities are of equal importance. A suggestion to hold parish consultation also cropped up. The proposal was unanimously approved by the body. The task of conducting parish consultation on prioritizing local pastoral priorities was given to Pastoral Coordinating Council under the chairmanship of Fr. Romeo Violeta.</p>
+        <br>
+        <p>In another General Assembly of Priests & Religious Men and Women on March 20, 2001, the Pastoral Coordinating Council reported on the outcome of their separate meeting which was done sometime in February. It was announced that the holding of a Diocesan Synod was timely. A Synod, having a juridical character,  includes a parish consultation and deliberation that would guide the Diocese in setting its own pastoral priorities. In that same meeting, a Secretariat for the Proposed Diocesan Synod was formed with Msgr. Joselito C. Asis, as Chairman, together with some other 4 members.</p>
+        <br>
+        <p>The Secretariat then proposed to the Bishop the possibility of holding a Diocesan Synod, and after some deliberation and consultation with some members of the Presbyteral Council, the Bishop expressed his desire to convene the first ever Diocesan Synod in Daet.</p>
+        <br>
+        <p>Thus, in his Pastoral Letter dated September 01, 2001 (but read in all the Churches within the Diocese earlier on Sunday, August 26, 2001), the Most Reverend Benjamin J. Almoneda, Bishop of Daet, formally expressed his ardent desire to convoke a diocesan Synod.  This entailed a one-year thorough preparation starting September 01, 2001 until its actual celebration on the weekdays nearest to September 01, 2002, the 28th anniversary of the foundation of the Diocese.</p>
+
+
+
+        <div class="special_map_holder">
+            <div id="map" class="special_map" style="width: 100%; height: 100%;"></div>
+        </div>
     </main>
-    <br><br><br>
     <footer>
         <div style="display: flex; align-items: center;">
             <div class="coat_of_arms_footer">
                 <img src="/res/Coat_of_arms_of_the_Diocese_of_Daet.png" alt="Coat of arms of the Diocese of Daet">
             </div>
-            <div class="diocese_of_daet_contact_adress">
+            <div class="diocese_of_daet_contact_address">
                 <h2>DIOCESE OF DAET</h2><hr>
                 <h3>Brgy. Gahonon, Daet, 4600 Camarines Norte, Bicol, Philippines</h3>
                 <h3>Email: daetchancery@yahoo.com</h3>
@@ -65,5 +146,6 @@
     </footer>
     <h3 style="background-color: rgb(48, 48, 48); text-align: center; color: white; padding: 5px; font-size: 1rem;">Created and Designed by Aidan Miguel Lausin</h3>
     <script src="/script.js"></script>
+    <script src="/map_stuff.js"></script>
 </body>
 </html>

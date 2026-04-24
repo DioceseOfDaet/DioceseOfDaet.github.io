@@ -89,7 +89,6 @@ about_subnav.addEventListener('mouseenter', openMenu);
 about_subnav.addEventListener('mouseleave', startCloseTimer);
 
 let slideIndex = 0;
-showSlides();
 
 function showSlides() {
   let i;

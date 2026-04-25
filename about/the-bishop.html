@@ -38,37 +38,109 @@
         </nav>
     </header>
     <main>
+        <h2 class="red_title">Bishops</h2>
         <div class="bishops">
-            <div class="bishop_info">
+            <div class="bishop_info bishop_table_header">
                 <div class="bishop_header">
-                    <h3>Portrait</h3>
-                    <h3>Name</h3>
-                    <h3>Period in Office</h3>
-                    <h3>View More</h3>
+                    <h4>No.</h4>
+                    <h4>Portrait</h4>
+                    <h4>Name</h4>
+                    <h4>Period in Office</h4>
+                    <h4>View More</h4>
                 </div>
             </div>
             <div class="bishop_info">
                 <div class="bishop_header">
+                    <h4>5</h4>
                     <div class="bishop_portrait_image_holder">
                         <img src="/res/bishops/herman_abcede/bishop_portrait.jpg">
                     </div>
                     <h2 class="bishop_name_header">Herman Guinto Abcede, RCJ</h2>
-                    <h3>2025 - Present</h3>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <h3>May 1, 2025 &mdash; Present</h3>
+                        <span id="counting_days">Updating...</span>
+                    </div>
                     <h2>&#x25BC;</h2>
                 </div>
                 <div class="bishop_info_expanded">
 
                 </div>
             </div>
-            
+            <div class="bishop_info">
+                <div class="bishop_header">
+                    <h4>4</h4>
+                    <div class="bishop_portrait_image_holder">
+                        <img src="/res/bishops/rex_andrew_clement_alarcon/bishop_portrait.jpg">
+                    </div>
+                    <h2 class="bishop_name_header">Rex Andrew Clement Alarcon</h2>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <h3>March 20, 2019 &mdash; February 22, 2024</h3>
+                        <span>(4 years, 339 days)</span>
+                    </div>
+                    <h2>&#x25BC;</h2>
+                </div>
+                <div class="bishop_info_expanded">
+
+                </div>
+            </div>
+            <div class="bishop_info">
+                <div class="bishop_header">
+                    <h4>3</h4>
+                    <div class="bishop_portrait_image_holder">
+                        <img src="/res/bishops/gilbert_armea_garcera/bishop_portrait.jpg">
+                    </div>
+                    <h2 class="bishop_name_header">Gilbert Armea Garcera</h2>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <h3>June 30, 2007 &mdash; February 2, 2017</h3>
+                        <span>(9 years, 217 days)</span>
+                    </div>
+                    <h2>&#x25BC;</h2>
+                </div>
+                <div class="bishop_info_expanded">
+
+                </div>
+            </div>
+            <div class="bishop_info">
+                <div class="bishop_header">
+                    <h4>2</h4>
+                    <div class="bishop_portrait_image_holder">
+                        <img src="/res/bishops/benjamin_de_jesus_almoneda/bishop_portrait.jpg">
+                    </div>
+                    <h2 class="bishop_name_header">Benjamin de Jesus Almoneda</h2>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <h3>September 1, 1991 &mdash; April 4, 2007</h3>
+                        <span>(15 years, 215 days)</span>
+                    </div>
+                    <h2>&#x25BC;</h2>
+                </div>
+                <div class="bishop_info_expanded">
+
+                </div>
+            </div>
+            <div class="bishop_info">
+                <div class="bishop_header">
+                    <h4>1</h4>
+                    <div class="bishop_portrait_image_holder">
+                        <img src="/res/bishops/celestino_rojo_enverga/bishop_portrait.jpg">
+                    </div>
+                    <h2 class="bishop_name_header">Celestino Rojo Enverga</h2>
+                    <h3>September 1, 1974 &mdash; October 16, 1990 <br> <span>(16 years, 45 days)</span></h3>
+                    <h2>&#x25BC;</h2>
+                </div>
+                <div class="bishop_info_expanded">
+
+                </div>
+            </div>
         </div>
+
+        <h2 class="red_title">Auxilary Bishops</h2>
     </main>
     <footer>
         <div style="display: flex; align-items: center;">
             <div class="coat_of_arms_footer">
                 <img src="/res/Coat_of_arms_of_the_Diocese_of_Daet.png" alt="Coat of arms of the Diocese of Daet">
             </div>
-            <div class="diocese_of_daet_contact_adress">
+            <div class="diocese_of_daet_contact_address">
                 <h2>DIOCESE OF DAET</h2><hr>
                 <h3>Brgy. Gahonon, Daet, 4600 Camarines Norte, Bicol, Philippines</h3>
                 <h3>Email: daetchancery@yahoo.com</h3>
@@ -88,5 +160,29 @@
     </footer>
     <h3 style="background-color: rgb(48, 48, 48); text-align: center; color: white; padding: 5px; font-size: 1rem;">Created and Designed by Aidan Miguel Lausin</h3>
     <script src="/script.js"></script>
+    <script>
+        function updateCounter() {
+            const startDate = new Date('2025-05-01T00:00:00');
+            const now = new Date();
+            
+            // Calculate time difference in milliseconds
+            const diffTime = now - startDate;
+
+            // Convert milliseconds to days
+            const oneDay = 1000 * 60 * 60 * 24;
+            let totalDays = Math.floor(diffTime / oneDay);
+
+            // Calculate years and remaining days
+            const years = Math.floor(totalDays / 365.25); // Account for leap years
+            const days = Math.floor(totalDays % 365.25);
+
+            // Update HTML
+            document.getElementById('counting_days').innerHTML = 
+                "(" + days + " days)";
+        }
+
+        // Run the function when the page loads
+        updateCounter();
+    </script>
 </body>
 </html>

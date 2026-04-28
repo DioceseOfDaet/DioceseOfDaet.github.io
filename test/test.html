@@ -3,71 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camarines Norte Map</title>
-
-    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.js"></script>
-    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet" />
-    
-    <script src="https://cdn.maptiler.com/maptiler-leaflet-sdk/v2.0.0/leaflet-maptiler-sdk.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
+    <title>Interactive Coat of Arms</title>
     <style>
-        body { margin: 0; padding: 0; }
-        #map { height: 100vh; width: 100%; }
+        :root {
+            --accent: #D4AF37;
+            --text-color: #333;
+        }
+
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            padding: 20px; 
+            background: #f4f4f4; 
+        }
+        
+        .container { 
+            display: flex; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            gap: 30px;
+        }
+
+        .wrapper { 
+            position: relative; 
+            display: inline-block; 
+        }
+
+        #coa-img { 
+            display: block; 
+            max-width: 100%; 
+            height: auto; 
+        }
+        
+        #highlight-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            pointer-events: none; 
+        }
+
+        .sidebar { 
+            flex: 1; 
+            min-width: 300px; 
+            border-left: 4px solid var(--accent); 
+            padding-left: 20px; 
+        }
+
+        #info-title { color: #8B0000; margin-top: 0; }
+        #info-content { line-height: 1.6; color: var(--text-color); font-size: 1.1rem; }
+
+        area { cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div id="map"></div>
+<div class="container">
+    <div class="wrapper" id="coa-wrapper">
+        <img src="/res/bishops/herman_abcede/coat_of_arms.png" usemap="#image-map" id="coa-img">
+        <canvas id="highlight-canvas"></canvas>
+        
+        <map name="image-map" id="main-map">
+            <area class="static" alt="Motto" coords="8,1202,15,1194,25,1189,46,1184,65,1183,67,1124,79,1117,93,1115,115,1117,143,1121,178,1126,181,1089,196,1078,210,1075,241,1077,273,1081,336,1083,408,1090,452,1091,526,1097,593,1100,648,1099,713,1097,789,1096,862,1089,933,1086,990,1080,1054,1079,1078,1079,1085,1079,1096,1083,1102,1087,1103,1130,1128,1123,1153,1121,1177,1120,1188,1118,1200,1117,1209,1122,1214,1130,1216,1182,1233,1182,1246,1187,1256,1191,1267,1195,1275,1204,1255,1202,1243,1202,1220,1206,1214,1209,1213,1225,1227,1234,1239,1239,1251,1247,1266,1262,1236,1251,1204,1252,1182,1253,1164,1255,1143,1256,1123,1252,1117,1241,1117,1217,1093,1221,1062,1227,1040,1229,1016,1230,999,1224,997,1173,913,1177,846,1183,794,1187,730,1191,660,1191,604,1191,540,1189,463,1184,392,1180,331,1176,289,1173,284,1223,269,1230,244,1230,217,1223,167,1216,167,1243,160,1253,146,1256,128,1258,111,1254,96,1252,81,1252,64,1252,54,1253,38,1256,25,1260,15,1263,29,1250,40,1241,50,1234,64,1228,72,1225,68,1218,67,1209,56,1204,44,1200,31,1200,23,1202" shape="poly">
+            <area class="static" alt="Galero" coords="641,7,625,8,613,10,599,11,587,16,575,19,563,26,553,32,546,36,539,44,532,51,526,59,521,51,513,51,505,58,499,52,490,50,481,50,472,52,463,52,453,54,447,53,442,50,438,55,438,67,438,78,427,80,414,84,404,85,393,89,383,95,377,102,383,110,404,118,426,122,445,124,456,126,475,129,492,130,480,147,461,166,453,174,435,188,416,197,405,201,400,191,392,180,382,169,370,163,354,158,340,157,325,159,313,163,300,171,291,178,280,187,274,195,257,189,236,180,212,174,200,173,187,175,175,181,165,184,158,191,149,204,142,215,139,231,140,245,142,257,149,270,155,279,168,287,178,292,188,295,188,392,180,398,172,406,170,415,172,420,170,427,174,432,168,443,167,459,168,499,167,511,162,524,174,528,129,627,122,631,115,637,113,643,113,651,110,658,111,663,116,665,111,674,108,686,108,705,109,717,110,732,107,749,105,758,115,762,71,861,62,866,56,872,54,880,55,889,53,896,57,901,53,910,50,916,50,968,50,977,49,985,47,992,60,996,73,997,85,996,99,996,343,995,343,987,341,977,340,953,340,930,339,909,333,901,338,895,335,888,335,875,330,867,324,863,319,858,276,763,284,760,283,745,281,729,282,700,281,680,273,667,279,662,278,655,278,645,272,636,266,630,262,625,217,529,227,528,223,508,222,491,223,477,224,457,222,446,215,433,219,431,219,422,219,414,215,403,204,394,204,296,222,291,236,284,245,276,254,266,262,253,275,259,288,265,301,269,317,273,328,273,342,274,360,271,376,267,386,258,396,247,402,235,407,218,429,208,451,197,469,182,479,173,496,156,513,133,544,135,582,138,612,137,661,137,704,137,734,136,766,133,785,155,802,172,820,190,832,197,842,204,852,209,862,215,875,219,878,235,885,247,893,258,906,267,921,271,937,274,952,274,964,273,978,269,992,265,1006,260,1018,253,1026,266,1036,276,1051,288,1060,292,1076,295,1076,392,1065,403,1061,414,1062,423,1060,429,1066,433,1060,440,1057,455,1058,495,1057,517,1053,526,1062,528,1018,627,1009,632,1004,642,1002,654,1001,662,1007,667,1000,677,999,686,999,705,999,723,999,740,998,752,994,760,1004,762,961,859,954,863,947,870,945,876,944,884,942,891,947,899,942,907,939,916,940,971,937,987,936,993,947,995,990,996,1229,995,1234,994,1231,985,1230,971,1230,915,1227,908,1223,900,1226,897,1226,890,1226,883,1225,874,1220,867,1212,861,1165,762,1175,759,1172,733,1173,694,1170,679,1165,668,1167,660,1167,654,1165,639,1158,630,1151,627,1106,530,1117,526,1112,494,1112,443,1105,433,1110,429,1109,421,1109,408,1102,398,1093,394,1092,295,1102,293,1113,287,1125,279,1132,269,1139,258,1141,245,1143,231,1139,216,1132,204,1123,193,1115,187,1105,181,1093,176,1082,174,1068,173,1044,180,1023,187,1006,195,991,178,980,170,967,164,956,159,940,157,926,158,911,163,898,169,889,179,880,191,876,202,854,192,836,182,819,167,802,150,786,131,814,129,835,127,855,123,875,119,892,112,904,104,903,96,889,89,843,78,841,49,835,53,826,54,790,51,781,52,775,57,771,50,764,52,754,59,738,40,719,26,703,19,682,14,663,9" shape="poly">
 
-  <script>
-    // Use maptilersdk to initialize the map directly to avoid the 'L.maptilerLayer' error
-    const map = new maptilersdk.Map({
-      container: 'map',
-      style: "019db912-cee9-723a-93e6-b89360815c9e", // Your Style ID
-      apiKey: "qqOC54zoRb8iFyHyyMOi",
-      center: [122.62696, 14.11761], // MapTiler uses [Lng, Lat]
-      zoom: 9.1
+            <area class="parent" data-group="diocese" alt="Diocese of Daet" coords="380,386,380,936,387,954,393,964,407,974,425,983,599,982,616,991,628,997,635,1009,641,1026,639,386" shape="poly">
+            <area class="parent" data-group="herman" alt="Bishop Herman Arms" coords="642,388,639,1029,646,1011,651,1001,661,994,672,986,682,982,854,984,868,977,883,970,893,956,900,944,901,933,901,387" shape="poly">
+
+            <area class="static" alt="Processional Cross" coords="642,146,634,146,627,152,620,158,616,169,616,176,625,183,625,237,569,239,565,232,556,228,550,231,542,234,542,241,534,241,529,249,531,258,537,264,543,265,546,273,555,276,563,271,567,266,624,267,625,319,619,322,615,328,615,336,618,342,627,347,627,368,620,369,615,373,617,380,621,385,627,1291,641,1355,655,1290,654,385,661,385,665,380,667,373,661,369,654,369,655,346,661,345,665,339,668,332,664,325,656,321,656,268,710,267,715,271,721,275,728,276,734,273,738,264,745,264,749,258,753,252,750,245,745,240,738,239,736,232,730,228,723,227,715,230,712,236,656,237,656,183,661,180,665,174,667,167,664,161,654,157,654,153,648,147" shape="poly">            
+        </map>
+    </div>
+
+    <div class="sidebar">
+        <h2 id="info-title">Heraldry Guide</h2>
+        <div id="info-content">
+            <p>Click a shield to reveal its components. Move your mouse away to reset.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+  const heraldryData = {
+        "diocese of daet": { title: 'The Coat of Arms of the Diocese of Daet', content: 'The color <b>Gules (Red)</b> is in memory of the <b>first Bishop of Daet,</b> the Most <b>Reverend Celestino R. Enverga</b>, as his second surname in Spanish means red, <b>"Rojo."</b> <br><br> The <b>Or (Gold)</b> and <b>Argent (White)</b> are the colors of the Papal flag, <b>symbolizing the Diocese\'s loyalty to the Lord Jesus Christ and to the Successor of St. Peter.</b>' },
+        "holy trinity": { title: '', content: 'One of the earliest Christian symbols for the <b>Holy Trinity can be seen: three fishes joined together in a single triangular shape.</b> The Holy Trinity is the <b>Titular Patron of the Cathedral</b> of the Diocese of Daet. On the Feast of the Holy Trinity (June 9, 1974), the Papal Nuncio announced to the newspapers the establishment of the new Diocese and the choice of Pope Paul VI for its first bishop.' },
+        "cross with keys": { title: '', content: 'The <b>Black Cross with eight points</b> is a symbol dating back to the first century for <b>St. John the Baptist, the Patron of the Parish and the Capitol of Camarines Norte, the town of Daet;</b> this has also been the seat of the Bishop of the Diocese since its establishment in 1974. The <b>Golden Key</b> is the symbol of <b>St. Peter the Apostle</b> (Mt 16:19), who is also the Patron of the <b>Parish in the town of Vinzons, Camarines Norte.</b> The <b>Golden Sword</b> is a unique symbol of the <b>Parish of Our Lady of Candelaria in Paracale, Camarines Norte.</b>' },
+        "flower and axe": { title: '', content: 'On the left side, there is a <b>White Lily</b>, a sign of <b>St. Joseph,</b> and of his <b>goodness, holiness, purity, and obedience to God.</b> <br><br> The <b>Pickaxe</b> is a symbol of the <b>gold, iron, and copper mines, and other minerals abundant in the province of Camarines Norte,</b> which the Diocese oversees. This symbol also comes from the first seal of the Diocese. ' },
+        "bishop herman arms": { title: 'Personal Coat of Arms of the Most Reverend Herman Guinto Abcede, R.C.J., D.D.', content: 'The color <b>Azure (Blue)</b> is based on the deep devotion of Bishop Herman to the Blessed Virgin Mary, and <b>Vert (Green)</b> is the color for <b>Ecclesiastical inquiry in the field of Canon Law,</b> a field of study that is important to Bishop Herman.' },
+        "burning heart": { title: '', content: 'The Radiant <b>Sacred Heart with Wheat</b> is a symbol of the <b>Burning Heart of Jesus,</b> which is full of mercy for people who approach Him like sheep without a shepherd. This is why Jesus told His disciples to <b>pray to the Lord of the Harvest to send workers into His harvest.</b> These are also symbols borrowed from the logo of the <b>Congregation of the Rogationists of the Heart of Jesus,</b> founded by St. Hannibal Mary Di Francia, of which the Bishop is also a member.' },
+        "keys": { title: '', content: '<,>St. Peter the Apostle, the patron of the town where Bishop Herman originated (Vinzons, Camarines Norte),</b> is depicted holding <b>two keys</b> symbolizing the keys to the Kingdom of Heaven. These symbols declare St. Peter\'s duty as the guardian of the gates of Heaven, according to the Bible, especially in Matthew 16:19, where Jesus gave Peter the "keys of the kingdom of heaven." The two keys also signify his power to bind and to loose, showing his very important duty in the Church.' },
+        "border": { title: '', content: 'The <b>twelve crosses with smaller crosses on their arms (or Cross Crosslets)</b> are also symbols of the <b>Catholic Church founded on the faith of the Twelve Apostles,</b> and can be seen in the Small Christian Communities journeying together in the spirit of the <b>Synodal</b> process.' },
+        "motto": { title: '', content: '<b>"ROGATE ERGO DOMINUM MESSIS",</b> taken from the Good News according to <b>St. Matthew (9:38): "Pray therefore the Lord of the harvest</b> to send out laborers into his harvest."' },
+        "processional cross": {title: 'Processional Cross', content: 'Also called the Heraldic Cross, is the <b>cross</b> placed directly behind the shield. the cross <b>"supports"</b> the shield from behind, acting as the primary symbol of the <b>cleric\'s participation in the authority of Christ.</b> A <b>bishops processional cross</b> only has <b>one bar (Latin Cross)</b> symbolizing it\'s <b>rank as a bishop</b>'},
+        "galero": {title: 'Galero', content: 'A bishop\'s <b>galero</b> is green; The <b>green</b> color specifically symbolizes the <b>office of a shepherd and the hope for the spiritual growth of the diocese,</b> the color originated in Spain where formerly a green hat was actually worn by bishops. <br><br> A bishop\'s galero has <b>6 tassles on each side</b> in a pyramind structure (arranged 1, 2, 3), for a <b>total of 12</b>. The number of <b>tassles hanging from each side of the galero</b> symbolizes the <b>rank and authority in the Catholic Church.</b>'}
+    };
+
+    const img = document.getElementById('coa-img');
+    const canvas = document.getElementById('highlight-canvas');
+    const ctx = canvas.getContext('2d');
+    const mainMap = document.getElementById('main-map');
+    const infoTitle = document.getElementById('info-title');
+    const infoContent = document.getElementById('info-content');
+
+    const childData = {
+        diocese: [
+            { alt: "Holy Trinity", coords: "379,387,380,684,639,684,637,387" },
+            { alt: "Cross with Keys", coords: "382,683,380,936,385,949,391,960,403,971,422,980,509,980,509,683" },
+            { alt: "Flower and Axe", coords: "512,683,511,980,599,983,617,991,634,1007,641,1028,639,685" }
+        ],
+        herman: [
+            { alt: "Burning Heart", coords: "642,442,642,682,845,683,843,443" },
+            { alt: "Keys", coords: "642,684,639,940,651,934,663,927,679,925,824,926,834,922,841,917,846,909,845,684" },
+            { alt: "Border", coords: "643,388,643,442,846,442,845,905,841,913,835,922,823,925,677,925,661,928,648,936,642,941,639,1029,651,1003,660,990,671,987,684,984,853,983,871,975,885,967,893,956,901,938,901,385" }
+        ]
+    };
+
+    function resizeMap() {
+        if (!img.naturalWidth) return;
+        const scale = img.clientWidth / img.naturalWidth;
+        canvas.width = img.clientWidth;
+        canvas.height = img.clientHeight;
+        
+        document.querySelectorAll('area:not(.child)').forEach(area => {
+            if(!area.dataset.original) area.dataset.original = area.coords;
+            area.coords = area.dataset.original.split(',').map(c => Math.round(c * scale)).join(',');
+        });
+    }
+
+    function resetAll() {
+        document.querySelectorAll('.child').forEach(c => c.remove());
+        updateSidebar("Heraldry Guide", "Click a shield to reveal its components. Move your mouse away to reset.");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function injectChildren(groupName) {
+        document.querySelectorAll('.child').forEach(c => c.remove());
+        const scale = img.clientWidth / img.naturalWidth;
+        
+        childData[groupName].forEach(data => {
+            const area = document.createElement('area');
+            area.className = 'child';
+            area.shape = 'poly';
+            area.alt = data.alt;
+            area.coords = data.coords.split(',').map(c => Math.round(c * scale)).join(',');
+
+            area.addEventListener('mouseenter', drawHighlight);
+            // If mouse leaves child, clear highlight but DON'T reset (it might go back to parent)
+            area.addEventListener('mouseleave', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+            area.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateSidebar(data.alt, `Historical explanation of the ${data.alt} symbol.`);
+            });
+
+            mainMap.prepend(area); 
+        });
+    }
+
+    function drawHighlight(e) {
+        const area = e.target;
+        const coords = area.coords.split(',').map(Number);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = area.classList.contains('parent') ? "rgba(139, 0, 0, 0.3)" : "rgba(212, 175, 55, 0.4)";
+        ctx.strokeStyle = "#D4AF37";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let i = 0; i < coords.length; i += 2) {
+            i === 0 ? ctx.moveTo(coords[i], coords[i+1]) : ctx.lineTo(coords[i], coords[i+1]);
+        }
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+    }
+
+    function updateSidebar(altText) {
+        const data = heraldryData[altText.toLowerCase()];
+        if (data) {
+            infoTitle.innerText = data.title;
+            infoContent.innerHTML = `<p>${data.content}</p>`;
+        }
+    }
+
+    // Global Click Reset
+    document.addEventListener('click', resetAll);
+
+    function setupAreas() {
+        document.querySelectorAll('.parent, .static').forEach(area => {
+            area.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (area.classList.contains('parent')) {
+                    injectChildren(area.dataset.group);
+                    updateSidebar(area.alt, "Symbols unlocked. Hover over them to see details.");
+                } else {
+                    resetAll();
+                    updateSidebar(area.alt, `The ${area.alt} represents...`);
+                }
+            });
+
+            area.addEventListener('mouseenter', drawHighlight);
+
+            area.addEventListener('mouseleave', (e) => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Logic: If we move from parent to a child, don't reset.
+                // We use a small timeout to see where the mouse "landed"
+                setTimeout(() => {
+                    const hovered = document.querySelectorAll('area:hover');
+                    if (hovered.length === 0) {
+                        resetAll();
+                    }
+                }, 10);
+            });
+        });
+    }
+
+    window.addEventListener('load', () => {
+        resizeMap();
+        setupAreas();
     });
+    window.addEventListener('resize', resizeMap);
+</script>
 
-    // Once the map is loaded, we handle the Leaflet-style GeoJSON
-    map.on('load', function() {
-      fetch('/test/camarines_norte.json')
-      .then(response => {
-        if (!response.ok) throw new Error("File not found");
-        return response.json();
-      })
-      .then(data => {
-        // Add GeoJSON using the MapTiler/MapLibre syntax (more performant)
-        map.addSource('province', {
-          'type': 'geojson',
-          'data': data
-        });
-
-        map.addLayer({
-          'id': 'province-fill',
-          'type': 'fill',
-          'source': 'province',
-          'layout': {},
-          'paint': {
-              'fill-color': '#ff7800',
-              'fill-opacity': 0.2
-          }
-        });
-
-        map.addLayer({
-          'id': 'province-outline',
-          'type': 'line',
-          'source': 'province',
-          'layout': {},
-          'paint': {
-              'line-color': '#ff7800',
-              'line-width': 3
-          }
-        });
-      })
-      .catch(err => console.error("Error loading GeoJSON:", err));
-    });
-  </script>
 </body>
 </html>

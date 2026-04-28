@@ -101,3 +101,83 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 3000); // Change image every 2 seconds
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const pathSegments = window.location.pathname.split('/');
+    // Assumes URL structure like: /parishes/cathedral_of_the_most_holy_trinity/info.html
+    const objectName = pathSegments[pathSegments.length - 2]; 
+
+    fetch('/parishes.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            const folderData = jsonData[objectName];
+
+            if (folderData) {
+                // 1. Populate based on data-field attribute
+                const fieldElements = document.querySelectorAll('[data-field]');
+                
+                fieldElements.forEach(element => {
+                    const fieldName = element.getAttribute('data-field');
+                    const value = folderData[fieldName];
+
+                    if (value !== undefined) {
+                        if (element.tagName === 'IMG') {
+                            element.src = value;
+                        } else if (element.tagName === 'A') {
+                            // If it's a social link like Facebook
+                            element.href = value;
+                            // Optional: If the anchor is empty, use the URL as text
+                            if (!element.innerText.trim()) element.innerText = value;
+                        } else {
+                            element.innerText = value;
+                        }
+                    }
+                });
+
+                // 2. Handle dynamic paths (for localized assets)
+                const pathElements = document.querySelectorAll('[data-path]');
+                pathElements.forEach(el => {
+                    const rawPath = el.getAttribute('data-path');
+                    const finalPath = rawPath.replace('{ID}', objectName);
+                    
+                    if (el.tagName === 'IMG') {
+                        el.src = finalPath;
+                    } else if (el.tagName === 'A') {
+                        el.href = finalPath;
+                    }
+                });
+            }
+        })
+        .catch(err => console.error("Error fetching parish data:", err));
+});
+
+function openLightbox(element) {
+  const overlay = document.getElementById("lightbox-overlay");
+  const fullImg = document.getElementById("lightbox-img");
+  overlay.style.display = "flex";
+  fullImg.src = element.src;
+  document.body.classList.add("no-scroll");
+  document.getElementById("navBar").style.top = "-50vw";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox-overlay").style.display = "none";
+  document.body.classList.remove("no-scroll");
+}
+
+function openBishopExpanded(bishopExpandedID) {
+  const bishopExpanded = document.getElementById(bishopExpandedID);
+  const isActive = bishopExpanded.classList.contains('active');
+
+  document.querySelectorAll('.bishop_info_expanded').forEach(el => {
+    el.classList.remove('active');
+  });
+
+  if (!isActive) {
+    bishopExpanded.classList.add('active');
+
+    bishopExpanded.scrollIntoView({ 
+      block: 'start' 
+    });
+  }
+}

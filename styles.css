@@ -8,6 +8,7 @@ body{
     background-color: rgb(253, 246, 234);
     overflow-x: hidden;
     font-size: 1.6rem;
+    scroll-behavior: smooth;
 }
 
 
@@ -31,7 +32,7 @@ header{
     align-items: center;
     position: fixed;
     width: 100vw;
-    z-index: 9999999999;
+    z-index: 7777777777777;
     top: 0;
     transition: top 1s;
 }
@@ -55,7 +56,6 @@ header{
 nav{
     position: fixed;
     right: 0;
-    z-index: 999999999;
 }
 nav ul{
     padding: 20px;
@@ -154,7 +154,7 @@ footer .diocese_of_daet_contact_address{
 }
 
 .diocese_of_daet_contact_address h2{
-    font-size: 2.9rem;
+    font-size: 2.87rem;
     width: max-content;
 }
 
@@ -380,20 +380,21 @@ footer .diocese_of_daet_contact_address{
 #lightbox-overlay {
     display: none; /* Hidden by default */
     position: fixed;
-    z-index: 9999; /* Sit on top of everything */
+    z-index: 77777; /* Sit on top of everything */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
     text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 /* The Image inside the Lightbox */
 #lightbox-img {
-    max-width: 90%;
+    max-width: 88%;
     max-height: 80%;
-    margin-top: 5%;
     border: 3px solid white;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
@@ -458,7 +459,7 @@ footer .diocese_of_daet_contact_address{
 }
 
 .bishop_header > *{
-    background-color: #eeeeee;
+    background-color: #e2e2e2;
     border: rgb(150, 150, 150) solid 1px;
     display: flex;
     justify-content: center;
@@ -466,20 +467,168 @@ footer .diocese_of_daet_contact_address{
     text-align: center;
 }
 
-.bishop_header:not(.bishop_table_header .bishop_header):hover *{
+.bishop_header:not(.bishop_table_header .bishop_header):hover *:not(.bishop_header h3 span){
     cursor: pointer;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
     color: #373737;
 }
 
-h3 span{
+.bishop_header h3 span{
     font-weight: lighter;
     font-size: 87%;
+}
+
+.bishop_header h3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .bishop_header:hover .bishop_portrait_image_holder img{
     opacity: 50%;
 }
+
+.more_button{
+    font-size: 2rem;
+}
+
+.bishop_info_expanded{
+    display: none;
+    max-height: 0;
+    background-color: #f7f7f7;
+    padding: 10px 7rem;
+}
+
+.active{
+    display: block;
+    max-height: max-content;
+}
+
+.bishop_info_expanded_portrait_and_basic_info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bishop_info_expanded_portrait_image_holder{
+    width: 30%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.bishop_info_expanded_portrait_image_holder img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.bishop_info_expanded_basic_info{
+    width: 70%;
+}
+
+.bishop_info_expanded_basic_info h2{
+    font-size: 4rem;
+}
+
+.bishop_info_expanded_coat_of_arms_image_holder{
+    width: 50%
+}
+
+.bishop_info_expanded_coat_of_arms_image_holder img{
+    width: 100%;
+}
+
+.bishop_info_expanded_coat_of_arms_image_holder.herman_abcede{
+    width: 100%;
+    display: flex;
+    margin-left: 0;
+}
+
+.wrapper { 
+    position: relative; 
+    display: inline-block; 
+    width: 50%;
+}
+
+#coa-img { 
+    display: block; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+#highlight-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none; 
+}
+
+.sidebar { 
+    flex: 1; 
+    max-width: 50%;
+    border-left: 4px solid var(--accent); 
+    padding-left: 20px; 
+}
+
+#info-title { 
+    color: var(--red); 
+    margin-bottom: 50px;
+}
+
+area { cursor: pointer; }
+
+/* VICARIATES */
+.vicariates{
+    background-color: #e2e2e2;
+    border: rgb(150, 150, 150) solid 1px;
+}
+
+.parish{
+    background-color: #e2e2e2;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border-collapse: collapse;
+}
+
+.parish > *{
+    border: rgb(150, 150, 150) solid 1px;
+    width: 100%;
+    height: 100%;
+}
+
+.parish_image_holder{
+    padding: 10px;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.parish_image_holder img{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.parish_text_redirect{
+    display: grid;
+    grid-template-columns: 77% 23%;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.parish_text h3{
+    font-weight: lighter;
+}
+
+.parish_redirect{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
 /* CONTACT US */
 .contact_us{
     display: grid;
@@ -784,6 +933,97 @@ h3 span{
         column-gap: 0;
     }
 
+    /* THE BISHOP */
+    .bishop_table_header .bishop_header h4{
+        font-size: 70%;
+    }
+
+    .bishop_header h3 span{
+        font-size: 87%;
+    }
+
+    .bishop_header h3{
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+
+    .bishop_header .bishop_name_header{
+        font-size: 1.7rem;
+        padding: 5px;
+    }
+
+    .more_button{
+        font-size: 2rem;
+    }
+
+    .bishop_info_expanded{
+        padding: 10px 5rem;
+    }
+
+    .active{
+        display: block;
+        max-height: max-content;
+    }
+
+    .bishop_info_expanded_portrait_and_basic_info{
+        flex-direction: column;
+    }
+
+    .bishop_info_expanded_portrait_image_holder{
+        width: 50%;
+    }
+
+    .bishop_info_expanded_basic_info{
+        width: 100%;
+    }
+
+    .bishop_info_expanded_basic_info h2{
+        font-size: 3.7rem;
+        text-align: center;
+    }
+
+    .bishop_info_expanded_coat_of_arms_image_holder{
+        width: 100%
+    }
+
+    .bishop_info_expanded_coat_of_arms_image_holder img{
+        width: 100%;
+    }
+
+    .bishop_info_expanded_coat_of_arms_image_holder.herman_abcede{
+        flex-direction: column;
+    }
+
+    .wrapper { 
+        width: 100%;
+    }
+
+    .sidebar { 
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+    #info-title { 
+        margin-bottom: 10px;
+    }
+
+    /* VICARIATES */
+    .parish_image_holder{
+        padding: 5px;
+    }
+
+    .parish_text h2{
+        font-size: 2.3rem;
+    }
+
+    .parish_text h3{
+        font-size: 1.7rem;
+    }
+
+    .parish_redirect{
+        font-size: 1.7rem;
+    }
+
     /* CONTACT US */
     .contact_us{
         grid-template-columns: 100%;
@@ -883,7 +1123,7 @@ h3 span{
     }
 
     .cathedral_image{
-        width: 90%;
+        width: 88.8%;
     }
 
     /* PARISHES - INDIVIDUAL*/
@@ -922,6 +1162,75 @@ h3 span{
     .special_map_popup p a{
         text-decoration: none;
         color: blue;
+    }
+
+    /* THE BISHOP */
+    .bishop_header{
+        grid-template-columns: 5% 20% 35% 30% 10%;
+    }
+
+    .bishop_portrait_image_holder{
+        padding: 3px;
+    }
+
+    .bishop_header h3 span{
+        font-size: 70%;
+    }
+
+    .bishop_header h3{
+        font-size: 1.1rem;
+        padding: 5px;
+    }
+
+    .bishop_header .bishop_name_header{
+        font-size: 1.3rem;
+        padding: 5px;
+    }
+
+    .more_button{
+        font-size: 1rem;
+    }
+
+    .bishop_info_expanded_portrait_image_holder{
+        width: 100%;
+    }
+
+    .bishop_info_expanded_basic_info{
+        width: 100%;
+    }
+
+    .bishop_info_expanded_basic_info h2{
+        font-size: 3rem;
+    }
+
+    .bishop_info_expanded{
+        padding: 10px 2rem;
+    }
+
+    /* VICARIATES */
+    .parish{
+        grid-template-columns: 25% 75%;
+    }
+
+    .parish_image_holder{
+        padding: 5px;
+    }
+
+    .parish_text_redirect{
+        grid-template-columns: 77% 23%;
+        padding: 0 5px;
+    }
+
+    .parish_text h2{
+        font-size: 1.1rem;
+    }
+
+    .parish_text h3{
+        font-size: 1rem;
+    }
+
+    .parish_redirect{
+        font-size: 1rem;
     }
 
     /* CONTACT US */

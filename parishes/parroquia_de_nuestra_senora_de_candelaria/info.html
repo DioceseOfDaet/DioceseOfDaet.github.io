@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title data-field="name"></title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/res/favicon.ico">
     <script src="https://kit.fontawesome.com/a878311718.js" crossorigin="anonymous"></script>
@@ -38,23 +38,23 @@
         </nav>
     </header>
     <main>  
-        <img id="church_image" src="" alt="Parish Image" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px;">
+        <img class="clickable-img" onclick="openLightbox(this)" data-field="church_image" src="" alt="Parish Image" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px;">
 
-        <h2 class="red_title" style="margin-left: 0;" id="name">Loading Parish...</h2>
-        <p><span id="description"></span></p>
+        <h2 class="red_title" style="margin-left: 0;" data-field="name">Loading Parish...</h2>
+        <p><span data-field="description"></span></p>
         <br><br>
         <div class="church_stuff">
             <div class="church_details">
-                <p><strong>Vicariate:</strong> <span id="vicariate"></span></p>
-                <p><strong>Titular:</strong> <span id="titular"></span></p>
-                <p><strong>Parish Priest:</strong> <span id="parish_priest"></span></p>
-                <p><strong>Address:</strong> <span id="address"></span></p>
-                <p><strong>Founding Year:</strong> <span id="founding"></span></p>
-                <p><strong>Feast Day:</strong> <span id="feast_day"></span></p>
-                <p><strong>Email:</strong> <span id="email"></span></p>
-                <p><strong>Phone:</strong> <span id="phone"></span></p>
+                <p><strong>Vicariate:</strong> <span data-field="vicariate"></span></p>
+                <p><strong>Titular:</strong> <span data-field="titular"></span></p>
+                <p><strong>Parish Priest:</strong> <span data-field="parish_priest"></span></p>
+                <p><strong>Address:</strong> <span data-field="address"></span></p>
+                <p><strong>Founding Year:</strong> <span data-field="founding"></span></p>
+                <p><strong>Feast Day:</strong> <span data-field="feast_day"></span></p>
+                <p><strong>Email:</strong> <span data-field="email"></span></p>
+                <p><strong>Phone:</strong> <span data-field="phone"></span></p>
                 <div class="church_facebook">
-                    <a id="facebook" href="#" target="_blank">
+                    <a data-field="facebook" href="#" target="_blank">
                         Visit Official Facebook
                     </a>
                 </div>
@@ -74,6 +74,7 @@
                 </div>
             </div>
         </div>
+        <a href="javascript:history.back()">← Previous Page</a>
     </main>
     <footer>
         <div style="display: flex; align-items: center;">
@@ -101,53 +102,7 @@
         <span id="lightbox-close">&times;</span>
         <img id="lightbox-img">
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const pathSegments = window.location.pathname.split('/');
-            const objectName = pathSegments[pathSegments.length - 2]; 
-
-            fetch('/parishes.json')
-                .then(response => response.json())
-                .then(jsonData => {
-                    const folderData = jsonData[objectName];
-
-                    if (folderData) {
-                        Object.keys(folderData).forEach(key => {
-                            const element = document.getElementById(key);
-                            if (element) {
-                                if (element.tagName === 'IMG') element.src = folderData[key];
-                                else if (element.tagName === 'A') element.href = folderData[key];
-                                else element.innerText = folderData[key];
-                            }
-                        });
-
-                        const pathElements = document.querySelectorAll('[data-path]');
-                        pathElements.forEach(el => {
-                            const rawPath = el.getAttribute('data-path');
-                            const finalPath = rawPath.replace('{ID}', objectName);
-                            if (el.tagName === 'IMG') {
-                                el.src = finalPath;
-                            } else if (el.tagName === 'A') {
-                                el.href = finalPath;
-                            }
-                        });
-                    }
-                });
-        });
-
-        function openLightbox(element) {
-            const overlay = document.getElementById("lightbox-overlay");
-            const fullImg = document.getElementById("lightbox-img");
-            overlay.style.display = "block";
-            fullImg.src = element.src;
-            document.body.classList.add("no-scroll");
-        }
-
-        function closeLightbox() {
-            document.getElementById("lightbox-overlay").style.display = "none";
-            document.body.classList.remove("no-scroll");
-        }
-    </script>
+     
     <script src="/script.js"></script>
 </body>
 </html>
